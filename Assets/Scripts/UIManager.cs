@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
             preTimerText.text = timer.ToString();
         }
         preTimerText.gameObject.SetActive(false);
+        gameManager.PreGameEnd();
     }
 
     public void GameTimer()
@@ -57,6 +58,7 @@ public class UIManager : MonoBehaviour
             timer--;
             timerText.text = timer.ToString();
         }
+        gameManager.GameEnd();
     }
 
     private void EndGame()

@@ -48,28 +48,20 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        preGameStart += PreGameEnd;
         preGameStart();
-        gameStart += GameEnd;
         combinationMade += SumPoints;
         reset += ResetCalled;
         highScore = PlayerPrefs.GetInt("HighScore" + SceneManager.GetActiveScene().name, 0);
     }
 
-    private void PreGameEnd()
+    public void PreGameEnd()
     {
-        StartCoroutine(StateEndTimer("state:game", preGameTimer));
+        stateManager.ChangeState(Constants.STATE_ID_GAME);
     }
 
-    private IEnumerator StateEndTimer(string id, float timer)
+    public void GameEnd()
     {
-        yield return new WaitForSeconds(timer + Time.deltaTime);
-        stateManager.ChangeState(id);
-    }
-
-    private void GameEnd()
-    {
-        StartCoroutine(StateEndTimer("state:endgame", gameTimer));
+        stateManager.ChangeState(Constants.STATE_ID_ENDGAME);
     }
 
     private void SumPoints(Colors colorType)
