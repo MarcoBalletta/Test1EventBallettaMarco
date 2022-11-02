@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI newHighScoreText;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject panelEndGame;
-    Coroutine coroutineTimer;
     private float timer;
 
     private void Awake()
@@ -26,7 +25,7 @@ public class UIManager : MonoBehaviour
     public void PreGameTimer()
     {
         preTimerText.gameObject.SetActive(true);
-        coroutineTimer = StartCoroutine(PreGameCountdown());
+        StartCoroutine(PreGameCountdown());
     }
 
     private IEnumerator PreGameCountdown()
@@ -50,13 +49,13 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator GameCountdown()
     {
-        TimerText.text = gameManager.GameTimer.ToString();
+        timerText.text = gameManager.GameTimer.ToString();
         timer = gameManager.GameTimer;
         while (timer > 0)
         {
             yield return new WaitForSeconds(1f);
             timer--;
-            TimerText.text = timer.ToString();
+            timerText.text = timer.ToString();
         }
     }
 
@@ -85,6 +84,4 @@ public class UIManager : MonoBehaviour
         preTimerText.text = gameManager.PreGameTimer.ToString();
         pointsText.text = "0";
     }
-
-    public TextMeshProUGUI TimerText { get => timerText; set => timerText = value; }
 }

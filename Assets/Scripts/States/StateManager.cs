@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
-    public BaseGameState CurrentState;
-    public Dictionary<string, BaseGameState> statesList = new Dictionary<string, BaseGameState>();
+    private BaseGameState currentState;
+    private Dictionary<string, BaseGameState> statesList = new Dictionary<string, BaseGameState>();
     private GameManager gameManager;
+
+    public Dictionary<string, BaseGameState> StatesList { get => statesList; }
+    public BaseGameState CurrentState { get => currentState; }
 
     private void Awake()
     {
@@ -23,8 +26,8 @@ public class StateManager : MonoBehaviour
 
     public void ChangeState(string id)
     {
-        CurrentState?.Exit();
-        CurrentState = statesList[id];
-        CurrentState?.Enter(gameManager);
+        currentState?.Exit();
+        currentState = statesList[id];
+        currentState?.Enter(gameManager);
     }
 }

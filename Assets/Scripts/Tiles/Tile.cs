@@ -7,7 +7,6 @@ public class Tile : MonoBehaviour
 {
     private TileData data;
     private SpriteRenderer spriteRenderer;
-    private GameManager gm;
     private StateManager stateManager;
     private InputHandler inputHandler;
     private Board board;
@@ -16,6 +15,7 @@ public class Tile : MonoBehaviour
     public TileData Data { get => data; }
     public Board Board { get => board; }
 
+    //could pass directly input handlerinstead of game manager
     public void Init(int row, int column, Colors colorType, GameManager gameManager, Board boardValue)
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,21 +41,20 @@ public class Tile : MonoBehaviour
                 spriteRenderer.color = Constants.COLOR_BASIC;
                 break;
         }
-        gm = gameManager;
         inputHandler = gameManager.GetComponent<InputHandler>();
     }
 
     private void OnMouseDown()
     {
         inputHandler.CleanClickPositions();
-        if (stateManager.CurrentState != stateManager.statesList[Constants.STATE_ID_GAME] || movementCoroutine!= null) return;
+        if (stateManager.CurrentState != stateManager.StatesList[Constants.STATE_ID_GAME] || movementCoroutine!= null) return;
         inputHandler.FirstPositionClick = Input.mousePosition;
         inputHandler.SelectedTile = this;
     }
 
     private void OnMouseUp()
     {
-        if (stateManager.CurrentState != stateManager.statesList[Constants.STATE_ID_GAME] || movementCoroutine != null) return;
+        if (stateManager.CurrentState != stateManager.StatesList[Constants.STATE_ID_GAME] || movementCoroutine != null) return;
         inputHandler.LastPositionClick = Input.mousePosition;
         inputHandler.CheckDirection();
     }

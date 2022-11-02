@@ -6,9 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header ("References")]
-    [SerializeField] private UIManager Ui;
     [SerializeField] private Board Board;
-    private Board boardRef;
 
     [Header ("GridStats")]
     [SerializeField] private int rows;
@@ -31,12 +29,9 @@ public class GameManager : MonoBehaviour
     public EndGameStart endGameStart;
     public delegate void Reset();
     public Reset reset;
-    public delegate void MoveFinished();
-    public MoveFinished moveFinished;
     public delegate void CombinationMade(Colors typeColor);
     public CombinationMade combinationMade;
 
-    public StateManager StateManager { get => stateManager; }
     public float PreGameTimer { get => preGameTimer; }
     public float GameTimer { get => gameTimer; }
     public int Rows { get => rows; }
@@ -47,7 +42,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         stateManager = GetComponent<StateManager>();
-        boardRef = Instantiate(Board, Vector3.zero, Quaternion.identity);
+        Board boardRef = Instantiate(Board, Vector3.zero, Quaternion.identity);
         boardRef.Init(this);
     }
 

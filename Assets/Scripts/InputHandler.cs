@@ -8,9 +8,9 @@ public class InputHandler : MonoBehaviour
     private Vector3 lastPositionClick;
     [SerializeField] private Tile selectedTile;
 
-    public Tile SelectedTile { get => selectedTile; set => selectedTile = value; }
-    public Vector3 FirstPositionClick { get => firstPositionClick; set => firstPositionClick = value; }
-    public Vector3 LastPositionClick { get => lastPositionClick; set => lastPositionClick = value; }
+    public Tile SelectedTile { set => selectedTile = value; }
+    public Vector3 FirstPositionClick { set => firstPositionClick = value; }
+    public Vector3 LastPositionClick { set => lastPositionClick = value; }
 
     public void CheckDirection()
     {

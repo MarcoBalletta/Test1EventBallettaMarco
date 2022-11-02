@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class Constants
 {
+    //they could be read only
     public static string STATE_ID_PREGAME = "state:pregame";
     public static string STATE_ID_GAME = "state:game";
     public static string STATE_ID_ENDGAME = "state:endgame";

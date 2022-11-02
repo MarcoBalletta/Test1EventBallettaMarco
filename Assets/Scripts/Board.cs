@@ -8,11 +8,11 @@ public class Board : MonoBehaviour
     [SerializeField] private Tile tilePrefab;
     private Dictionary<Vector2, Tile> mapTiles = new Dictionary<Vector2, Tile>();
     private GameManager _gameManager;
-    private Tile otherTile;
+    private Tile otherTileMoved;
     [SerializeField] private float transitionVelocity;
 
     public float TransitionVelocity { get => transitionVelocity; }
-    public GameManager GameManager { get => _gameManager; set => _gameManager = value; }
+    public GameManager GameManager { get => _gameManager; }
 
     public void Init(GameManager gm)
     {
@@ -103,34 +103,34 @@ public class Board : MonoBehaviour
         {
             case MovementDirection.right:
                 if (tile.Data.Column + 1 >= _gameManager.Columns) return;
-                otherTile = mapTiles[new Vector2(tile.Data.Row, tile.Data.Column + 1)];
-                otherTile.Data.Column -= 1;
+                otherTileMoved = mapTiles[new Vector2(tile.Data.Row, tile.Data.Column + 1)];
+                otherTileMoved.Data.Column -= 1;
                 tile.Data.Column += 1;
                 break;
             case MovementDirection.left:
                 if (tile.Data.Column - 1 < 0) return;
-                otherTile = mapTiles[new Vector2(tile.Data.Row, tile.Data.Column - 1)];
-                otherTile.Data.Column += 1;
+                otherTileMoved = mapTiles[new Vector2(tile.Data.Row, tile.Data.Column - 1)];
+                otherTileMoved.Data.Column += 1;
                 tile.Data.Column -= 1;
                 break;
             case MovementDirection.up:
                 if (tile.Data.Row + 1 >= _gameManager.Rows) return;
-                otherTile = mapTiles[new Vector2(tile.Data.Row + 1, tile.Data.Column)];
-                otherTile.Data.Row -= 1;
+                otherTileMoved = mapTiles[new Vector2(tile.Data.Row + 1, tile.Data.Column)];
+                otherTileMoved.Data.Row -= 1;
                 tile.Data.Row += 1;
                 break;
             case MovementDirection.down:
                 if (tile.Data.Row - 1 < 0) return;
-                otherTile = mapTiles[new Vector2(tile.Data.Row - 1, tile.Data.Column)];
-                otherTile.Data.Row += 1;
+                otherTileMoved = mapTiles[new Vector2(tile.Data.Row - 1, tile.Data.Column)];
+                otherTileMoved.Data.Row += 1;
                 tile.Data.Row -= 1;
                 break;
         }
-        mapTiles[new Vector2(otherTile.Data.Row, otherTile.Data.Column)] = otherTile;
+        mapTiles[new Vector2(otherTileMoved.Data.Row, otherTileMoved.Data.Column)] = otherTileMoved;
         mapTiles[new Vector2(tile.Data.Row, tile.Data.Column)] = tile;
-        MoveTiles(tile, otherTile);
+        MoveTiles(tile, otherTileMoved);
         tile.CheckForCombinations(mapTiles);
-        otherTile.CheckForCombinations(mapTiles);
+        otherTileMoved.CheckForCombinations(mapTiles);
         return;
     }
 
