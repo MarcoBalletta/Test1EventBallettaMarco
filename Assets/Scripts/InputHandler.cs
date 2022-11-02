@@ -20,22 +20,22 @@ public class InputHandler : MonoBehaviour
         {
             if(direction.x > 0)
             {
-                selectedTile.Board?.MoveTileData(MovementDirection.right, selectedTile);
+                selectedTile?.Board.MoveTileData(MovementDirection.right, selectedTile);
             }
             else
             {
-                selectedTile.Board?.MoveTileData(MovementDirection.left, selectedTile);
+                selectedTile?.Board.MoveTileData(MovementDirection.left, selectedTile);
             }
         }
         else
         {
             if (direction.y > 0)
             {
-                selectedTile.Board?.MoveTileData(MovementDirection.up, selectedTile);
+                selectedTile?.Board.MoveTileData(MovementDirection.up, selectedTile);
             }
             else
             {
-                selectedTile.Board?.MoveTileData(MovementDirection.down, selectedTile);
+                selectedTile?.Board.MoveTileData(MovementDirection.down, selectedTile);
             }
         }
     }

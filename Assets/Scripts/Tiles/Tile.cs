@@ -66,30 +66,36 @@ public class Tile : MonoBehaviour
             if (data.Row + 1 < board.GameManager.Rows && data.ColorType == mapTiles[new Vector2(data.Row + 1, data.Column)].data.ColorType)
             {
                 board.DestroyCombinationTiles(this, mapTiles[new Vector2(data.Row - 1, data.Column)], mapTiles[new Vector2(data.Row + 1, data.Column)]);
+                return;
             }
             else if (data.Row - 2 >= 0 && data.ColorType == mapTiles[new Vector2(data.Row - 2, data.Column)].data.ColorType)
             {
                 board.DestroyCombinationTiles(this, mapTiles[new Vector2(data.Row - 1, data.Column)], mapTiles[new Vector2(data.Row - 2, data.Column)]);
+                return;
             }
         }
         if (data.Row + 2 < board.GameManager.Rows && data.ColorType == mapTiles[new Vector2(data.Row + 1, data.Column)].data.ColorType && data.ColorType == mapTiles[new Vector2(data.Row + 2, data.Column)].data.ColorType)
         {
             board.DestroyCombinationTiles(this, mapTiles[new Vector2(data.Row + 1, data.Column)], mapTiles[new Vector2(data.Row + 2, data.Column)]);
+            return;
         }
         if (data.Column - 1 >= 0 && data.ColorType == mapTiles[new Vector2(data.Row, data.Column - 1)].data.ColorType)
         {
             if (data.Column + 1 < board.GameManager.Columns && data.ColorType == mapTiles[new Vector2(data.Row, data.Column + 1)].data.ColorType)
             {
                 board.DestroyCombinationTiles(this, mapTiles[new Vector2(data.Row, data.Column - 1)], mapTiles[new Vector2(data.Row, data.Column + 1)]);
+                return;
             }
             else if (data.Column - 2 >= 0 && data.ColorType == mapTiles[new Vector2(data.Row, data.Column - 2)].data.ColorType)
             {
                 board.DestroyCombinationTiles(this, mapTiles[new Vector2(data.Row, data.Column - 1)], mapTiles[new Vector2(data.Row, data.Column - 2)]);
+                return;
             }
         }
         if (data.Column + 2 < board.GameManager.Columns && data.ColorType == mapTiles[new Vector2(data.Row, data.Column + 1)].data.ColorType && data.ColorType == mapTiles[new Vector2(data.Row, data.Column + 2)].data.ColorType)
         {
             board.DestroyCombinationTiles(this, mapTiles[new Vector2(data.Row, data.Column + 1)], mapTiles[new Vector2(data.Row, data.Column + 2)]);
+            return;
         }
     }
 

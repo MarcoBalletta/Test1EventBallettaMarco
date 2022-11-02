@@ -147,9 +147,9 @@ public class Board : MonoBehaviour
     {
         Tile[] tiles = {first, second, third};
         ReplaceTile(tiles);
-        Destroy(first.gameObject, .2f);
-        Destroy(second.gameObject, .2f);
-        Destroy(third.gameObject, .2f);
+        Destroy(first.gameObject, .1f);
+        Destroy(second.gameObject, .1f);
+        Destroy(third.gameObject, .1f);
         _gameManager.combinationMade(first.Data.ColorType);
     }
 
