@@ -501,7 +501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da19fb6fedec904d8188d6ddb127afb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ui: {fileID: 244878631}
   Board: {fileID: 2206374532470453802, guid: a2fea0b5e1bb71c4f9f4334eeeb9c307, type: 3}
   rows: 4
   columns: 3
@@ -536,8 +535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3dcc12fa3c7814189358840abf1bbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentState:
-    stateName: 
 --- !u!114 &240917106
 MonoBehaviour:
   m_ObjectHideFlags: 0

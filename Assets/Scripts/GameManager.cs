@@ -48,7 +48,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        preGameStart();
+        //preGameStart();
+        stateManager.ChangeState(Constants.STATE_ID_PREGAME);
         combinationMade += SumPoints;
         reset += ResetCalled;
         highScore = PlayerPrefs.GetInt("HighScore" + SceneManager.GetActiveScene().name, 0);
